@@ -3,21 +3,23 @@ import { useState } from "react";
 import { handleSignUp } from "@/firebaseFunctions/Auth/handleSignUp";
 import { View } from "react-native";
 import styles from "@/stylesheets/styles";
-export default function LoginForm() {
+import { Link } from "expo-router";
+export default function SignUpForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
 
   return (
-    <View>
+    <View style = {styles.outerContainer}>
 
-        <Text>Hoşgeldiniz</Text>
+        <Text variant="headlineLarge" style={styles.titleWithoutHeader}>Hoşgeldiniz</Text>
 
       <TextInput
         label="Email"
         mode="outlined"
         value={email}
         onChangeText={setEmail}
+        style={styles.InnerItemMedium}
       />
 
       <TextInput
@@ -26,12 +28,13 @@ export default function LoginForm() {
         value={password}
         onChangeText={setPassword}
         secureTextEntry={true}
+        style={styles.InnerItemMedium}
         
       />
-      <Button mode="contained" onPress={() => handleSignUp(email, password)}>
+      <Button style={styles.InnerItemMedium} mode="contained" onPress={() => handleSignUp(email, password)}>
        Kayıt Ol
       </Button>
-        <Text>Zaten hesabınız var mı? Hemen <Text>Giriş Yap</Text></Text>
+        <Text>Zaten hesabınız var mı?  <Link href={"/login"}>Giriş Yap</Link></Text>
     </View>
   );
 }
