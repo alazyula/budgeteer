@@ -1,8 +1,18 @@
 import { addDoc, collection } from "firebase/firestore";
 import Group from "@/model/Group";
-import { db } from "@/firebase";
-export async function createNewGroup(group: Group) {
-    // Add a new document with a generated id.
-    const docRef = await addDoc(collection(db, "groups"), group);
-    console.log("Document written with ID: ", docRef.id);
+import { auth, db } from "@/firebase";
+import { router } from "expo-router";
+export async function createNewGroup(name : string) {
+    
+    const docRef = await addDoc(collection(db, "groups"), {
+        name: name,
+        owner: auth.currentUser?.uid,
+        members: [auth.currentUser?.uid]
+
+    }).then((docRef) => {
+        router.push(`/group/${docRef.id}`);
+    }).catch((error) => {
+        console.error("Error adding document: ", error);
+    });
+  
 }

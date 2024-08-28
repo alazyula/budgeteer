@@ -7,34 +7,46 @@ import { Link } from "expo-router";
 export default function SignUpForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [username, setUsername] = useState("");
 
   return (
-    <View style = {styles.outerContainer}>
-
-        <Text variant="headlineLarge" style={styles.titleWithoutHeader}>Hoşgeldiniz</Text>
+    <View style={styles.outerContainer}>
+      <Text variant="headlineLarge" style={styles.titleWithoutHeader}>
+        Hoşgeldiniz
+      </Text>
 
       <TextInput
-        label="Email"
+        label="Eposta"
         mode="outlined"
         value={email}
         onChangeText={setEmail}
         style={styles.InnerItemMedium}
       />
-
       <TextInput
-        label="Password"
+        label="İsim"
+        mode="outlined"
+        value={username}
+        onChangeText={setUsername}
+        style={styles.InnerItemMedium}
+      />
+      <TextInput
+        label="Şifre"
         mode="outlined"
         value={password}
         onChangeText={setPassword}
         secureTextEntry={true}
         style={styles.InnerItemMedium}
-        
       />
-      <Button style={styles.InnerItemMedium} mode="contained" onPress={() => handleSignUp(email, password)}>
-       Kayıt Ol
+      <Button
+        style={styles.InnerItemMedium}
+        mode="contained"
+        onPress={() => handleSignUp(email, username, password)}
+      >
+        Kayıt Ol
       </Button>
-        <Text>Zaten hesabınız var mı?  <Link href={"/login"}>Giriş Yap</Link></Text>
+      <Text>
+        Zaten hesabınız var mı? <Link href={"/login"}>Giriş Yap</Link>
+      </Text>
     </View>
   );
 }

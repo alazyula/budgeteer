@@ -1,5 +1,5 @@
 type Group = {
-   // id: string;
+    id: string;
     name: string;
     description: string;
     owner: string;
