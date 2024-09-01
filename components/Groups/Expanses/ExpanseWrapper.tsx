@@ -35,7 +35,7 @@ const ExpanseWrapper = () => {
         Yeni Harcama Ekle
       </Button>
       <Button
-        onPress={() => router.push(`/group/addNewExpense/${id}`)}
+        onPress={() => router.push(`/group/analytics/${id}`)}
         mode="contained"
         style={styles.InnerItemMedium}>
         Harcama Analizi

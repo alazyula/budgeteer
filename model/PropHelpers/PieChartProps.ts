@@ -2,8 +2,8 @@ type PieChartProps = {
     data: PropData[];
 };
 type PropData = {
-  x: string;
-  y: number;
+  name: string;
+  population: number;
 };
 
 export default PieChartProps;

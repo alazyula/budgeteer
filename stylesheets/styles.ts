@@ -23,6 +23,14 @@ const styles = StyleSheet.create({
     marginTop: 100,
    
   },
+  innerContainer: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    width: "100%",
+    height: "75%",
+    justifyContent: "space-around",
+  },
 });
 
 export default styles;
