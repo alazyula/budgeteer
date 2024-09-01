@@ -1,23 +1,48 @@
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
+import { Text } from 'react-native-paper'
 import React from 'react'
-import { List } from 'react-native-paper'
+import { List, Surface } from 'react-native-paper'
 import { useEffect, useState } from 'react'
 import Group from '@/model/Group'
 import { fetchGroupsByUser } from '@/firebaseFunctions/Firestore/Groups/fetchGroupsByUser'
+import { FlatList } from 'react-native'
+import { router } from 'expo-router'
+import styles from '@/stylesheets/styles'
+import useRouteParameter from '@/hooks/useRouteParameter'
 
- async function GroupsList ( userId: string)  {
+  function GroupsList ()  {
     let groups: Group[]
+    const [data, setData] = useState<Group[]>([])
+    const id = useRouteParameter();
     useEffect( ()=> { 
        async function fetchGroups() {
-              groups = await fetchGroupsByUser(userId)
+              groups = await fetchGroupsByUser(id)
+              setData(groups);
+              
          } 
             fetchGroups() }, []
     )
 
   return (
-    <View>
-      <Text>GroupsList</Text>
-    </View>
+    <Surface style = {styles.outerContainer}>
+
+
+     
+
+<FlatList
+    data={data}
+    keyExtractor={(item) => item.id}
+    renderItem={({ item }) => (
+      <List.Item
+        title={item.name}
+        
+        onPress={() =>  router.push(`/group/${item.id}`)}
+      />
+    )}
+  />
+
+
+      </Surface>
   )
 }
 

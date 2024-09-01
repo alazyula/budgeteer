@@ -9,7 +9,17 @@ export async function getExpansesByGroupId(groupId: string) {
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
         const data = doc.data()
-        const expanse : Expense = (doc.id, data.description, data.amount, data.date, data.groupId, data.paidBy)
+        let expanse : Expense 
+        expanse = {
+            id: doc.id,
+            description: data.description,
+            category: data.category,
+            amount: data.amount,
+            date: data.date,
+            groupId: data.groupId,
+            paidBy: data.paidBy,
+            payerId: data.payerId
+        }
         expanses.push(expanse)})
 
     return expanses

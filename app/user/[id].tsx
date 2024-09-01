@@ -9,7 +9,7 @@ const Id = () => {
   return (
     <Surface style={styles.outerContainer}>
       <Text style={styles.titleWithoutHeader} variant='headlineLarge' >Gruplarım</Text>
-      
+      <GroupsList />
       <AddNewGroupButton />
     </Surface>
   )

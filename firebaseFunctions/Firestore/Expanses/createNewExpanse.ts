@@ -1,13 +1,15 @@
 import { db } from "@/firebase";
-import { collection, setDoc, doc } from "firebase/firestore";
+import { collection, setDoc, doc, addDoc } from "firebase/firestore";
 
-export async function createNewExpanse(description: string, amount: number, date: string, groupId: string, paidBy: string) {
+export async function createNewExpanse( category:string ,description: string, amount: number, date: string, groupId: string, paidBy: string, payerId: string) {
   
-   await setDoc(doc(db, "expanses"), {
+   await addDoc(collection(db, "expanses"), {
+    category: category,  
     description: description,
     amount: amount,
     date: date,
     groupId: groupId,
-    paidBy: paidBy }
+    paidBy: paidBy,
+    payerId: payerId}
    )
 }

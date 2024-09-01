@@ -5,6 +5,8 @@ type Expense = {
     date: string;
     groupId: string;
     paidBy: string;
+    payerId: string;
+    category: string;
 }
 
 export default Expense;

@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
   },
   titleWithoutHeader: {
     marginTop: 100,
+   
   },
 });
 

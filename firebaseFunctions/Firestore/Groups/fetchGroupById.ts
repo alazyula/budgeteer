@@ -5,6 +5,6 @@ import Group from "@/model/Group";
 export async function fetchGroupById(id: string) {
   const docRef = doc(db, "groups", id);
   const docSnap = await getDoc(docRef);
-  return docSnap.data() as Group; 
+  return docSnap.data() ; 
   
 }
